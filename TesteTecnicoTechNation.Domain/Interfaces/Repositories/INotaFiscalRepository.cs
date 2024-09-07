@@ -9,7 +9,7 @@ namespace TesteTecnicoTechNation.Domain.Interfaces.Repositories
 {
     public interface INotaFiscalRepository
     {
-        Task<IEnumerable<NotaFiscal>> GetAllNotaFiscals();
+        Task<IEnumerable<NotaFiscal>> GetAllNotasFiscais();
         Task<NotaFiscal> GetNotaFiscalById(int id);
     }
 }
