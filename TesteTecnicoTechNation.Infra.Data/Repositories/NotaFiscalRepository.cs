@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 using TesteTecnicoTechNation.Domain.Entities;
 using TesteTecnicoTechNation.Domain.Interfaces.Repositories;
 
@@ -10,14 +12,29 @@ namespace TesteTecnicoTechNation.Infra.Data.Repositories
 {
     public class NotaFiscalRepository : INotaFiscalRepository
     {
-        public Task<IEnumerable<NotaFiscal>> GetAllNotaFiscals()
+        private IDbConnection _connection;
+
+        public NotaFiscalRepository(IDbConnection connection)
         {
-            throw new NotImplementedException();
+            _connection = connection;
+        }
+        public async Task<IEnumerable<NotaFiscal>> GetAllNotasFiscais()
+        {
+            return await _connection.QueryAsync<NotaFiscal>(
+                sql: @"SELECT * FROM notasFiscais"
+                );
         }
 
-        public Task<NotaFiscal> GetNotaFiscalById(int id)
+        public async Task<NotaFiscal> GetNotaFiscalById(int id)
         {
-            throw new NotImplementedException();
+            DynamicParameters parametros = new DynamicParameters();
+
+            parametros.Add("@ID_Nota", id);
+
+            return await _connection.QueryFirstOrDefaultAsync<NotaFiscal>(
+                sql: @"SELECT * FROM notasFiscais WHERE id_nota = @ID_Nota",
+                param: parametros,
+                commandType: CommandType.Text);
         }
     }
 }
