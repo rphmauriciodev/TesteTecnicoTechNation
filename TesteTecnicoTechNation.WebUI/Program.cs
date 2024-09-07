@@ -1,6 +1,14 @@
+using TesteTecnicoTechNation.Infra.IoC;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddInfraestructure(builder.Configuration);
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -22,6 +30,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=NotaFiscal}/{action=Index}/{id?}");
 
 app.Run();
