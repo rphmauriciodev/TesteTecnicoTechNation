@@ -9,7 +9,9 @@ namespace TesteTecnicoTechNation.Application.Interfaces
 {
     public interface INotaFiscalService
     {
-        Task<IEnumerable<NotaFiscalDTO>> GetAllNotasFiscais();
+        Task<IEnumerable<NotaFiscalDTO>> GetNotasFiscais(char status = 'T');
+
+         Task<IEnumerable<NotaFiscalDTO>> GetNotasFiscaisByMonth(DateTime data, char tipoData = 'N', char status = 'T');
         Task<NotaFiscalDTO> GetNotaFiscalById(int id);
     }
 }

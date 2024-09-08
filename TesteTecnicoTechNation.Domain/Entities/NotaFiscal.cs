@@ -18,6 +18,7 @@ namespace TesteTecnicoTechNation.Domain.Entities
         public double VL_Nota { get; private set; }
         public string Documento_Nota { get; private set; }
         public string Documento_Boleto { get; private set; }
+        public int ID_Status { get; private set; }
         public string ST_Nota { get; private set; }
     }
 }
