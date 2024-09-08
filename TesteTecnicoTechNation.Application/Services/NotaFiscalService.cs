@@ -47,6 +47,11 @@ namespace TesteTecnicoTechNation.Application.Services
             var notaFiscalEntity = await _notaFiscalRepository.GetNotaFiscalById(id);
             return _mapper.Map<NotaFiscalDTO>(notaFiscalEntity);
         }
+        public async Task<IEnumerable<StatusDTO>> GetAllStatus()
+        {
+            var statusEntity = await _notaFiscalRepository.GetStatus();
+            return _mapper.Map<IEnumerable<StatusDTO>>(statusEntity);
+        }
         private int GetIdStatus(char status)
         {
             return status switch

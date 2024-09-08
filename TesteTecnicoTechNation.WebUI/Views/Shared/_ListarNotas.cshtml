@@ -1,0 +1,59 @@
+﻿@model IEnumerable<TesteTecnicoTechNation.Application.DTOs.NotaFiscalDTO>
+
+<hr />
+<br />
+<div class="panel panel-default">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID_Nota)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome_Pagador)
+                </th><th>
+                    @Html.DisplayNameFor(model => model.DT_Emissao)
+                </th><th>
+                    @Html.DisplayNameFor(model => model.DT_Cobranca)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DT_Pagamento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VL_Nota)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ST_Nota)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.ID_Nota)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.Nome_Pagador)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.DT_Emissao)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.DT_Cobranca)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.DT_Pagamento)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.VL_Nota)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelItem => item.ST_Nota)
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

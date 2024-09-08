@@ -3,64 +3,36 @@
 @{
     ViewData["Title"] = "Notas";
 }
-
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
 <div>
     <h2>@ViewData["Title"]</h2>
 </div>
-<hr />
-<br />
-<div class="panel panel-default">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ID_Nota)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nome_Pagador)
-                </th><th>
-                    @Html.DisplayNameFor(model => model.DT_Emissao)
-                </th><th>
-                    @Html.DisplayNameFor(model => model.DT_Cobranca)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DT_Pagamento)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.VL_Nota)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ST_Nota)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.ID_Nota)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.Nome_Pagador)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.DT_Emissao)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.DT_Cobranca)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.DT_Pagamento)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.VL_Nota)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.ST_Nota)
-                    </th>
-                </tr>
-            }
-        </tbody>
-    </table>
+<div>
+    <hr />
+        <div>
+            <select id="tipo_data">
+                <option value="N">Nenhuma</option>
+                <option value="E">Data de emissão</option>
+                <option value="C">Data de cobrança</option>
+                <option value="P">Data de pagamento</option>
+            </select>
+            <input type="date" id="date" placeholder="Data">
+            <select id="status">
+                <option value="T">Todos</option>
+                @foreach (var item in ViewBag.Status)
+                {
+                    <option value="@item.CD_Status">@item.ST_Nota</option>
+                }
+            </select>
+            <button id="filter">Filtrar</button>
+            <button id="clearFilter">Limpar filtros</button>
+        </div>
+        <div id="menuContainer">
+            @Html.Partial("_ListarNotas", Model)
+        </div>
 </div>
+    <script src="~/js/listarNotas.js"></script>
+</body>

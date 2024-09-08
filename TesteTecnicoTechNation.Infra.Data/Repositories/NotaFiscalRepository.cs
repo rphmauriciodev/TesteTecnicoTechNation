@@ -95,5 +95,16 @@ namespace TesteTecnicoTechNation.Infra.Data.Repositories
                 param: parametros,
                 commandType: CommandType.Text);
         }
+        
+        public async Task<IEnumerable<Status>> GetStatus()
+        {
+
+            return await _connection.QueryAsync<Status>(
+                sql: @"SELECT
+                           cd_status,
+                           st_nota
+                       FROM STATUS",
+                commandType: CommandType.Text);
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace TesteTecnicoTechNation.Domain.Interfaces.Repositories
         Task<IEnumerable<NotaFiscal>> GetNotasFiscais(int status);
         Task<NotaFiscal> GetNotaFiscalById(int id);
         Task<IEnumerable<NotaFiscal>> GetNotasFiscaisByMonth(int month, int year, char tipo_data, int id_status);
+        Task<IEnumerable<Status>> GetStatus();
     }
 }

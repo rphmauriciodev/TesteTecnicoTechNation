@@ -11,7 +11,8 @@ namespace TesteTecnicoTechNation.Application.Interfaces
     {
         Task<IEnumerable<NotaFiscalDTO>> GetNotasFiscais(char status = 'T');
 
-         Task<IEnumerable<NotaFiscalDTO>> GetNotasFiscaisByMonth(DateTime data, char tipoData = 'N', char status = 'T');
+        Task<IEnumerable<NotaFiscalDTO>> GetNotasFiscaisByMonth(DateTime data, char tipoData = 'N', char status = 'T');
         Task<NotaFiscalDTO> GetNotaFiscalById(int id);
+        Task<IEnumerable<StatusDTO>> GetAllStatus();
     }
 }

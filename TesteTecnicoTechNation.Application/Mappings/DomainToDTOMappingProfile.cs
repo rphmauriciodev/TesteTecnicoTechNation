@@ -14,6 +14,7 @@ namespace TesteTecnicoTechNation.Application.Mappings
         public DomainToDTOMappingProfile()
         {
             CreateMap<NotaFiscal, NotaFiscalDTO>().ReverseMap();
+            CreateMap<Status, StatusDTO>().ReverseMap();
         }
     }
 }
