@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     function toggleDateInput() {
-        $('#date').toggle($('#tipo_data').val() !== 'N');
+        $('#seletor_data').toggle($('#tipo_data').val() !== 'N');
     }
 
     toggleDateInput();

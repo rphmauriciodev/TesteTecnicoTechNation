@@ -13,13 +13,18 @@
 <div>
     <hr />
         <div>
+            <label for="tipo_data">Tipo de data:</label>
             <select id="tipo_data">
                 <option value="N">Nenhuma</option>
                 <option value="E">Data de emissão</option>
                 <option value="C">Data de cobrança</option>
                 <option value="P">Data de pagamento</option>
             </select>
-            <input type="date" id="date" placeholder="Data">
+            <div id="seletor_data">
+                <label for="date">Selecione a data:</label>
+                <input type="month" id="date">
+            </div>
+            <label for="status">Status:</label>
             <select id="status">
                 <option value="T">Todos</option>
                 @foreach (var item in ViewBag.Status)
