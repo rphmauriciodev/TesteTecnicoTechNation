@@ -1,4 +1,26 @@
-﻿@page
-@model TesteTecnicoTechNation.WebUI.Views.Dashboard.IndexModel
-@{
+﻿@{
+    ViewData["Title"] = "Dashboard";
 }
+<head>
+	<script type="module" src="~/js/Dashboard/inadimplenciaChart.js"></script>
+	<script type="module" src="~/js/Dashboard/dashboardChart.js"></script>
+	<script type="module" src="~/js/Dashboard/receitaChart.js"></script>
+    <link rel="stylesheet" href="~/css/Dashboard/styles.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <div id="dashboardChart" class="chart-container"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 d-flex justify-content-center">
+                <div id="inadimplenciaChart" class="chart-container"></div>
+            </div>
+            <div class="col-6 d-flex justify-content-center">
+                <div id="receitaChart" class="chart-container"></div>
+            </div>
+        </div>
+    </div>
+</body>

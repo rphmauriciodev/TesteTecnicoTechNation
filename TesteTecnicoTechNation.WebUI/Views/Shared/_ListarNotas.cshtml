@@ -3,57 +3,33 @@
 <hr />
 <br />
 <div class="panel panel-default">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.ID_Nota)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nome_Pagador)
-                </th><th>
-                    @Html.DisplayNameFor(model => model.DT_Emissao)
-                </th><th>
-                    @Html.DisplayNameFor(model => model.DT_Cobranca)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DT_Pagamento)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.VL_Nota)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ST_Nota)
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.ID_Nota)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.Nome_Pagador)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.DT_Emissao)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.DT_Cobranca)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.DT_Pagamento)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.VL_Nota)
-                    </th>
-                    <th>
-                        @Html.DisplayFor(modelItem => item.ST_Nota)
-                    </th>
-                </tr>
-            }
-        </tbody>
-    </table>
+	<table class="table table-striped ">
+		<thead>
+			<tr>
+				<th class="text-start">Nome do Pagador</th>
+				<th class="text-center">Data de Emissão</th>
+				<th class="text-center">Data de Cobrança</th>
+				<th class="text-center">Data do Pagamento</th>
+				<th class="text-center">Valor da Nota</th>
+				<th class="text-center">Documento da Nota Fiscal</th>
+				<th class="text-center">Documento do Boleto Bancário</th>
+				<th class="text-center">Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td class="text-start">@item.Nome_Pagador</td>
+					<td class="text-center">@item.DT_Emissao.ToString("dd/MM/yy")</td>
+					<td class="text-center">@item.DT_Cobranca.ToString("dd/MM/yy")</td>
+					<td class="text-center">@item.DT_Pagamento.ToString("dd/MM/yy")</td>
+					<td class="text-center">@item.VL_Nota.ToString("C2", new System.Globalization.CultureInfo("pt-BR"))</td>
+					<td class="text-center">@item.Documento_Nota</td>
+					<td class="text-center">@item.Documento_Boleto</td>
+					<td class="text-center">@item.ST_Nota</td>
+				</tr>
+			}
+		</tbody>
+	</table>
 </div>

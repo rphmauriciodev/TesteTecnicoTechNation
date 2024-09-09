@@ -1,43 +1,47 @@
 ﻿@model IEnumerable<TesteTecnicoTechNation.Application.DTOs.NotaFiscalDTO>
 
 @{
-    ViewData["Title"] = "Notas";
+	ViewData["Title"] = "Notas fiscais";
 }
 <head>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<link href="~/css/Notafiscal/styles.css" rel="stylesheet" />
 </head>
 <body>
-<div>
-    <h2>@ViewData["Title"]</h2>
-</div>
-<div>
-    <hr />
-        <div>
-            <label for="tipo_data">Tipo de data:</label>
-            <select id="tipo_data">
-                <option value="N">Nenhuma</option>
-                <option value="E">Data de emissão</option>
-                <option value="C">Data de cobrança</option>
-                <option value="P">Data de pagamento</option>
-            </select>
-            <div id="seletor_data">
-                <label for="date">Selecione a data:</label>
-                <input type="month" id="date">
-            </div>
-            <label for="status">Status:</label>
-            <select id="status">
-                <option value="T">Todos</option>
-                @foreach (var item in ViewBag.Status)
-                {
-                    <option value="@item.CD_Status">@item.ST_Nota</option>
-                }
-            </select>
-            <button id="filter">Filtrar</button>
-            <button id="clearFilter">Limpar filtros</button>
-        </div>
-        <div id="menuContainer">
-            @Html.Partial("_ListarNotas", Model)
-        </div>
-</div>
-    <script src="~/js/listarNotas.js"></script>
+	<div class="pt-5">
+		<div class="d-flex flex-column align-items-end">
+			<div class="filters d-flex justify-content-end mx-3">
+				<div class="tipo_data">
+					<label for="tipo_data">Filtrar por:</label>
+					<select class="form-select" id="tipo_data">
+						<option value="N">Nenhuma</option>
+						<option value="E">Data de emissão</option>
+						<option value="C">Data de cobrança</option>
+						<option value="P">Data de pagamento</option>
+					</select>
+				</div>
+				<div id="seletor_data" class="ms-3">
+					<label for="date">Selecione o mês e o ano:</label>
+					<input type="month" id="date" class="form-control form-control-month">
+				</div>
+				<div class="status ms-3">
+					<label for="status">Status:</label>
+					<select class="form-select" id="status">
+						<option value="T">Todos</option>
+						@foreach (var item in ViewBag.Status)
+						{
+							<option value="@item.CD_Status">@item.ST_Nota</option>
+						}
+					</select>
+				</div>
+			</div>
+			<div class="botoes mx-3 mt-2">
+				<button id="filter" class="btn btn-primary">Filtrar</button>
+				<button id="clearFilter" class="btn btn-primary">Limpar filtros</button>
+			</div>
+		</div>
+		<div id="menuContainer">
+			@Html.Partial("_ListarNotas", Model)
+		</div>
+	</div>
+	<script src="~/js/NotaFiscal/listarNotas.js"></script>
 </body>
