@@ -47,8 +47,9 @@ $(document).ready(function () {
                 const dadosGerais = dashboardData.dadosGerais;
 
                 renderDashboardChart(dashboardData.total, dashboardData.totalAVencer, dadosGerais);
-                renderInadimplenciaChart();
-                renderReceitaChart();
+                renderInadimplenciaChart(dashboardData.inadimplencias);
+                renderReceitaChart(dashboardData.receitas);
+                $('#ano').text(data.year || new Date().getFullYear());
             }
         });
     }

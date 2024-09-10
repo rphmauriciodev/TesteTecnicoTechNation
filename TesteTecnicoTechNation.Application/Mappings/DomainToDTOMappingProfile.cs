@@ -15,6 +15,9 @@ namespace TesteTecnicoTechNation.Application.Mappings
         {
             CreateMap<NotaFiscal, NotaFiscalDTO>().ReverseMap();
             CreateMap<Status, StatusDTO>().ReverseMap();
+            CreateMap<DadosGerais, DadosGeraisDTO>().ReverseMap();
+            CreateMap<Receita, ReceitaDTO>().ReverseMap();
+            CreateMap<Inadimplencia, InadimplenciaDTO>().ReverseMap();
         }
     }
 }

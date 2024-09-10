@@ -11,16 +11,16 @@ using TesteTecnicoTechNation.Domain.Interfaces.Repositories;
 
 namespace TesteTecnicoTechNation.Application.Services
 {
-	public class DadosFaturamentoService : IDadosFaturamentoService
-	{
-		private readonly IDadosFaturamentoRepository _dadosFaturamentoRepository;
-		private readonly IMapper _mapper;
-		public DadosFaturamentoService( IDadosFaturamentoRepository dadosFaturamentoRepository,
-										IMapper mapper)
-		{
-			_dadosFaturamentoRepository = dadosFaturamentoRepository;
-			_mapper = mapper;
-		}
+    public class DadosFaturamentoService : IDadosFaturamentoService
+    {
+        private readonly IDadosFaturamentoRepository _dadosFaturamentoRepository;
+        private readonly IMapper _mapper;
+        public DadosFaturamentoService(IDadosFaturamentoRepository dadosFaturamentoRepository,
+                                        IMapper mapper)
+        {
+            _dadosFaturamentoRepository = dadosFaturamentoRepository;
+            _mapper = mapper;
+        }
         public async Task<IEnumerable<DadosGeraisDTO>> GetDadosGerais(int? month = null, int? finalMonth = null, int? year = null)
         {
             var dados = await _dadosFaturamentoRepository.GetDadosGerais(month, finalMonth, year);
@@ -32,21 +32,35 @@ namespace TesteTecnicoTechNation.Application.Services
             { 4, "Valor total das notas pagas" }
         };
 
-			return dados.Select(item => new DadosGeraisDTO
-			(
-				item.ID_Status,
-				idDescricao.ContainsKey(item.ID_Status) ? idDescricao[item.ID_Status] : "Desconhecido",
-				item.Valor_total
+            return dados.Select(item => new DadosGeraisDTO
+            (
+                item.ID_Status,
+                idDescricao.ContainsKey(item.ID_Status) ? idDescricao[item.ID_Status] : "Desconhecido",
+                item.Valor_total
             )).ToList();
         }
         public async Task<decimal> GetTotal(int? month = null, int? final_month = null, int? year = null)
-		{
-			return await _dadosFaturamentoRepository.GetTotal(month, final_month, year);
-		}
-		public async Task<decimal> GetTotalAVencer(int? month = null, int? final_month = null, int? year = null)
-		{
-			var dataAtual = DateTime.Now;
-			return await _dadosFaturamentoRepository.GetTotalAVencer(dataAtual);
-		}
-	}
+        {
+            return await _dadosFaturamentoRepository.GetTotal(month, final_month, year);
+        }
+        public async Task<decimal> GetTotalAVencer(int? month = null, int? final_month = null, int? year = null)
+        {
+            var dataAtual = DateTime.Now;
+            return await _dadosFaturamentoRepository.GetTotalAVencer(dataAtual);
+        }
+
+        public async Task<IEnumerable<InadimplenciaDTO>> GetInadimplenciaByYear(int? year = null)
+        {
+            var ano = year ?? DateTime.Now.Year;
+            var inadimplenciaEntity = await _dadosFaturamentoRepository.GetInadimplenciaByYear(ano);
+            return _mapper.Map<IEnumerable<InadimplenciaDTO>>(inadimplenciaEntity);
+        }
+
+        public async Task<IEnumerable<ReceitaDTO>> GetReceitaByYear(int? year = null)
+        {
+            var ano = year ?? DateTime.Now.Year;
+            var receitaEntity = await _dadosFaturamentoRepository.GetReceitaByYear(ano);
+            return _mapper.Map<IEnumerable<ReceitaDTO>>(receitaEntity);
+        }
+    }
 }

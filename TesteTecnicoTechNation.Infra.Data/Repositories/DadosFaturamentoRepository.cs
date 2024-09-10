@@ -83,5 +83,29 @@ namespace TesteTecnicoTechNation.Infra.Data.Repositories
 						AND @Data_atual BETWEEN DATEADD(DAY, -7, dt_cobranca) AND dt_cobranca",
                 param: parametros);
         }
+        public async Task<IEnumerable<Inadimplencia>> GetInadimplenciaByYear(int year)
+        {
+            DynamicParameters parametros = new DynamicParameters();
+            parametros.Add("@Year", year);
+
+            return await _connection.QueryAsync<Inadimplencia>(
+                sql: @"SELECT total_inadimplencia,
+                              mes_inadimplencia
+                       FROM fn_GetInadimplenciaPorAno(@Year)
+                       ORDER BY mes_inadimplencia",
+                param: parametros);
+        }
+        public async Task<IEnumerable<Receita>> GetReceitaByYear(int year)
+        {
+            DynamicParameters parametros = new DynamicParameters();
+            parametros.Add("@Year", year);
+
+            return await _connection.QueryAsync<Receita>(
+                sql: @"SELECT total_receita,
+                              mes_pagamento
+                       FROM fn_GetReceitaPorAno(@Year)
+                       ORDER BY mes_pagamento",
+                param: parametros);
+        }
     }
 }

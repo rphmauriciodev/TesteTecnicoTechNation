@@ -1,6 +1,6 @@
 ﻿export function drawLineChart(elementId, dataTable, title) {
     const data = google.visualization.arrayToDataTable(dataTable);
-
+    
     const options = {
         title: title,
         curveType: 'function',
