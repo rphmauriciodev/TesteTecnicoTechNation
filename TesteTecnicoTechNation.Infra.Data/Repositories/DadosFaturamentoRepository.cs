@@ -76,7 +76,7 @@ namespace TesteTecnicoTechNation.Infra.Data.Repositories
             parametros.Add("@Year", year);
 
             return await _connection.QueryFirstOrDefaultAsync<decimal>(
-                sql: $@"SELECT SUM(vl_nota) 
+                sql: $@"SELECT ISNULL(SUM(vl_nota), 0)
 						FROM NOTAS_FISCAIS
 						{FilterQuery}
 						AND id_status = 1 

@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-db
+    hostname: database
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrong@Passw0rd
+    ports:
+      - "1433:1433"
+    volumes:
+      - mssql_data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "sqlcmd -U sa -P YourStrong@Passw0rd -Q 'SELECT 1'"]
+      interval: 10s
+      retries: 10
+      start_period: 40s
+      
+  testetecnicotechnation.webui:
+    image: ${DOCKER_REGISTRY-}testetecnicotechnationwebui
+    depends_on:
+      - mssql
+    build:
+      context: .
+      dockerfile: TesteTecnicoTechNation.WebUI/Dockerfile
+volumes:
+  mssql_data:
