@@ -7,6 +7,6 @@
         legend: { position: 'bottom' }
     };
 
-    const chart = new google.visualization.LineChart(document.getElementById(elementId));
+    const chart = new google.visualization.LineChart($(elementId).get(0));
     chart.draw(data, options);
 }

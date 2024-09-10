@@ -20,10 +20,13 @@ namespace TesteTecnicoTechNation.Infra.IoC
                 services.AddTransient<IDbConnection>(sp =>
                     new SqlConnection(configuration.GetConnectionString("DefaultConnection")));
 
-                services.AddScoped<INotaFiscalRepository, NotaFiscalRepository>();
-                services.AddScoped<INotaFiscalService, NotaFiscalService>();
+				services.AddScoped<INotaFiscalRepository, NotaFiscalRepository>();
+				services.AddScoped<INotaFiscalService, NotaFiscalService>();
 
-                services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
+				services.AddScoped<IDadosFaturamentoRepository, DadosFaturamentoRepository>();
+				services.AddScoped<IDadosFaturamentoService, DadosFaturamentoService>();
+
+				services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 
                 return services;
             }

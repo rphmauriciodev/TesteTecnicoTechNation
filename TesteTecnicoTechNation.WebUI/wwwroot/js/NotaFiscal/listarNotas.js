@@ -26,7 +26,7 @@
     $('#clearFilter').click(function () {
         $('#status').val('T');
         $('#tipo_data').val('N');
-        $('#date').val('');
+        $('#monthDate').val('');
         toggleDateInput();
         loadNotes('/NotaFiscal/Listar');
     });
@@ -34,9 +34,9 @@
     $('#filter').click(function () {
         const status = $('#status').val();
         const tipo_data = $('#tipo_data').val();
-        const date = $('#date').val();
+        const monthDate = $('#monthDate').val();
 
-        if (tipo_data !== 'N' && !date) {
+        if (tipo_data !== 'N' && !monthDate) {
             alert("O campo da data é obrigatório.");
             return;
         }
@@ -46,12 +46,12 @@
         if (status !== 'T') data.status = status;
         if (tipo_data !== 'N') {
             data.tipo_data = tipo_data;
-            if (date) data.date = date;
+            if (monthDate) data.date = monthDate;
         }
 
-        if (status !== 'T' && tipo_data !== 'N' && date) {
+        if (status !== 'T' && tipo_data !== 'N' && monthDate) {
             url = '/NotaFiscal/FilterByDateAndStatus';
-        } else if (tipo_data !== 'N' && date) {
+        } else if (tipo_data !== 'N' && monthDate) {
             url = '/NotaFiscal/FilterByDate';
         } else if (status !== 'T') {
             url = '/NotaFiscal/FilterByStatus';

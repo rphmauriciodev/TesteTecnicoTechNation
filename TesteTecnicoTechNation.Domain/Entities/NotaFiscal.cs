@@ -13,8 +13,8 @@ namespace TesteTecnicoTechNation.Domain.Entities
         public int ID_Nota { get; private set; }
         public string Nome_Pagador { get; private set; }
         public DateTime DT_Emissao { get; private set; }
-        public DateTime DT_Cobranca { get; private set; }
-        public DateTime DT_Pagamento { get; private set; }
+        public DateTime? DT_Cobranca { get; private set; }
+        public DateTime? DT_Pagamento { get; private set; }
         public double VL_Nota { get; private set; }
         public string Documento_Nota { get; private set; }
         public string Documento_Boleto { get; private set; }

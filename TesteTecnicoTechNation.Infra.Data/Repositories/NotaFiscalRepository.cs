@@ -36,7 +36,7 @@ namespace TesteTecnicoTechNation.Infra.Data.Repositories
                            documento_boleto,
                            id_status,
                            st_nota
-                       FROM dbo.GetAllNotas(@ID_Status)",
+                       FROM dbo.fn_GetNotasPorStatus(@ID_Status)",
                 param: parametros,
                 commandType: CommandType.Text);
         }
@@ -67,7 +67,7 @@ namespace TesteTecnicoTechNation.Infra.Data.Repositories
                            documento_boleto,
                            id_status,
                            st_nota
-                       FROM dbo.GetNotasByMonth(@Month, @Year, @Tipo_data, @ID_Status)",
+                       FROM dbo.fn_GetNotasPorData(@Month, @Year, @Tipo_data, @ID_Status)",
                 param: parametros,
                 commandType: CommandType.Text);
         }
@@ -90,7 +90,7 @@ namespace TesteTecnicoTechNation.Infra.Data.Repositories
                            documento_boleto,
                            id_status,
                            st_nota
-                       FROM dbo.GetAllNotas()
+                       FROM dbo.fn_GetNotasPorStatus()
                        WHERE id_status = @Status",
                 param: parametros,
                 commandType: CommandType.Text);

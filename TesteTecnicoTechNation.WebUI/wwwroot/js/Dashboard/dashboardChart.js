@@ -1,12 +1,16 @@
 ﻿import { drawDonutChart } from '../Charts/donutChart.js';
 
-const data = [
-    ['Total', 'Valor'],
-    ['Valor total das notas emitidas', 50],
-    ['Valor total das notas emitidas sem cobrança feita', 1170],
-    ['Valor total das notas vencidas - Inadimplência;', 660],
-    ['Valor total das notas a vencer', 1030],
-    ['Valor total das notas pagas', 1030],
-];
+export function renderDashboardChart(total, totalAVencer, dadosGerais) {
+        const data = [
+            ['Total', 'Valor'],
+            ['Valor total das notas emitidas', total],
+            ['Valor total das notas a vencer', totalAVencer]
+        ];
 
-google.charts.setOnLoadCallback(() => drawDonutChart('dashboardChart', data, 'Dashboard'));
+        dadosGerais.forEach(item => {
+            data.push([item.descricao, item.valor_total]);
+        });
+
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(() => drawDonutChart('#dashboardChart', data, 'Gráfico geral'));
+    }

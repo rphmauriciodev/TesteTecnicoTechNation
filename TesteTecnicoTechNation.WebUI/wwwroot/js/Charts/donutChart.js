@@ -6,6 +6,6 @@
         pieHole: 0.4
     };
 
-    const chart = new google.visualization.PieChart(document.getElementById(elementId));
+    const chart = new google.visualization.PieChart($(elementId).get(0));
     chart.draw(data, options);
 }

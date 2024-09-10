@@ -22,8 +22,8 @@
 				<tr>
 					<td class="text-start">@item.Nome_Pagador</td>
 					<td class="text-center">@item.DT_Emissao.ToString("dd/MM/yy")</td>
-					<td class="text-center">@item.DT_Cobranca.ToString("dd/MM/yy")</td>
-					<td class="text-center">@item.DT_Pagamento.ToString("dd/MM/yy")</td>
+					<td class="text-center">@(item.DT_Cobranca?.ToString("dd/MM/yy") ?? "--")</td>
+					<td class="text-center">@(item.DT_Pagamento?.ToString("dd/MM/yy") ?? "--")</td>
 					<td class="text-center">@item.VL_Nota.ToString("C2", new System.Globalization.CultureInfo("pt-BR"))</td>
 					<td class="text-center">@item.Documento_Nota</td>
 					<td class="text-center">@item.Documento_Boleto</td>

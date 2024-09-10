@@ -1,4 +1,5 @@
-﻿@model IEnumerable<TesteTecnicoTechNation.Application.DTOs.NotaFiscalDTO>
+﻿@using TesteTecnicoTechNation.Application.DTOs
+@model IEnumerable<NotaFiscalDTO>
 
 @{
 	ViewData["Title"] = "Notas fiscais";
@@ -20,8 +21,8 @@
 					</select>
 				</div>
 				<div id="seletor_data" class="ms-3">
-					<label for="date">Selecione o mês e o ano:</label>
-					<input type="month" id="date" class="form-control form-control-month">
+					<label for="month">Selecione o mês e o ano:</label>
+					<input type="month" id="monthDate" class="form-control form-control-month">
 				</div>
 				<div class="status ms-3">
 					<label for="status">Status:</label>

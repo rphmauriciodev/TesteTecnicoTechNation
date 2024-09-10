@@ -29,7 +29,7 @@ html, body {
 
 #sidebar-nav {
     width: 240px;
-    background-color: #e91e63;
+    background-color: var(--bs-primary);
 }
 
 #sidebar-nav .list-group-item {
@@ -37,7 +37,7 @@ html, body {
      font-weight: 400;
      font-size: 16px;
      color: white;
-     background-color: #e91e63;
+     background-color: var(--bs-primary);
      border: none;
      margin: 0 0 10px 5px;
      border-top-left-radius: 15px;
@@ -52,7 +52,7 @@ html, body {
     font-weight: 500;
     font-size: 20px;
     color: white;
-    background-color: #e91e63;
+    background-color: var(--bs-primary);
     border: none;
     margin: 0 0 10px 5px;
     border-top-left-radius: 15px;
@@ -73,7 +73,8 @@ html, body {
 
 #sidebar-nav .list-group-item.active {
     background-color: #FFF;
-    color: black; 
+    font-weight: 500;
+    color: var(--bs-primary); 
 }
 
 .profile {

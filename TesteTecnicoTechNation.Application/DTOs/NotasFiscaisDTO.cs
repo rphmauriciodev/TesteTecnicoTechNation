@@ -19,10 +19,10 @@ namespace TesteTecnicoTechNation.Application.DTOs
         public DateTime DT_Emissao { get; private set; }
 
         [Required(ErrorMessage = "A data de cobrança é obrigatória")]
-        public DateTime DT_Cobranca { get; private set; }
+        public DateTime? DT_Cobranca { get; private set; }
 
         [Required(ErrorMessage = "A data de pagamento é obrigatória")]
-        public DateTime DT_Pagamento { get; private set; }
+        public DateTime? DT_Pagamento { get; private set; }
 
         [Required(ErrorMessage = "O valor da nota é obrigatório")]
         public double VL_Nota { get; private set; }
